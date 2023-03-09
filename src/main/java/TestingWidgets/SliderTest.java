@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,8 +20,14 @@ public class SliderTest {
         WebElement sliderValue = driver.findElement(By.xpath("//*[@id='sliderValue']"));
         Assert.assertEquals(sliderValue.getAttribute("Value"),"25");
 
-        Actions action = new Actions(driver);
-        action.dragAndDrop()
+        Actions move = new Actions(driver);
+        int width = slider.getSize().getWidth();
+        int xOffset = (int) (width * 0.1);
+        move.dragAndDropBy(slider, xOffset, 0).build().perform();
+
+        Assert.assertEquals(sliderValue.getAttribute("Value"),"60");
+
+        driver.quit();
 
 
     }

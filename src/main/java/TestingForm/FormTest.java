@@ -1,4 +1,4 @@
-package MyFirstProject;
+package TestingForm;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 
-public class MyFirstClass {
+public class FormTest {
     @Test
     public static void myFirstTest() {
         WebDriver driver = new ChromeDriver();
